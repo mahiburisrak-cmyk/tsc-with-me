@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fff7f8">
+<title>One Little Date? ♡</title>
+<style>
+:root{--pink:#e86b86;--deep:#4b2730;--muted:#8b666e}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
+body{background:radial-gradient(circle at 15% 10%,#fff 0 12%,transparent 32%),linear-gradient(145deg,#fff8f9,#ffe9ee);color:var(--deep);overflow-x:hidden}
+.wrap{min-height:100vh;display:grid;place-items:center;padding:24px 16px}
+.card{width:min(430px,100%);padding:34px 23px 25px;text-align:center;border:1px solid #fff;background:rgba(255,255,255,.72);backdrop-filter:blur(18px);border-radius:32px;box-shadow:0 24px 70px rgba(128,58,75,.16)}
+.eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#bd7180;font-weight:700}
+h1{font-family:Georgia,serif;font-weight:500;font-size:40px;line-height:1.08;margin:14px 0 14px}
+p{line-height:1.65;color:#74545b;font-size:15px;margin:0 auto}
+.note{margin-top:24px;padding:18px;border-radius:22px;background:#fffafb;border:1px solid #f4dce1}
+.place{font-size:23px;font-weight:700}.sub{font-size:13px!important;color:#9b777e!important;margin-top:5px}
+.label{font-size:12px;color:#98747c;margin:23px 0 9px}
+.choices{display:flex;gap:10px}.day{flex:1;border:1px solid #edcbd2;background:#fff;border-radius:16px;padding:13px;color:#784450;font-weight:700;font-size:15px}
+.day.active{background:var(--pink);border-color:var(--pink);color:#fff;box-shadow:0 8px 20px rgba(232,107,134,.25)}
+.primary{width:100%;margin-top:20px;border:0;border-radius:17px;padding:15px;background:var(--pink);color:#fff;font-size:16px;font-weight:800;box-shadow:0 10px 25px rgba(232,107,134,.24)}
+.secondary{margin-top:10px;border:0;background:transparent;color:#a15f6e;font-size:14px;padding:10px}
+#result{min-height:24px;margin-top:17px;color:#a04f62;font-weight:700;font-size:14px}
+.footer{font-size:11px!important;color:#aa888f!important;margin-top:13px}
+.float{position:fixed;inset:0;pointer-events:none;overflow:hidden}.float span{position:absolute;bottom:-30px;color:#e994a5;opacity:.2;font-size:22px;animation:up 8s linear infinite}
+@keyframes up{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="float">
+<span style="left:8%;animation-delay:0s">♡</span><span style="left:25%;animation-delay:2s">♡</span>
+<span style="left:48%;animation-delay:4s">♥</span><span style="left:70%;animation-delay:1s">♡</span>
+<span style="left:88%;animation-delay:3s">♥</span>
+</div>
+
+<div class="wrap"><main class="card">
+<div class="eyebrow">A little invitation</div>
+<h1>Would you like<br>to go with me? ♡</h1>
+<p>I know it’s your coaching time…<br>but what if we make one of those evenings a little different?</p>
+
+<div class="note">
+<div class="place">📍 TSC</div>
+<div class="sub">Just you, me & a little memory.</div>
+</div>
+
+<div class="label">Which day should be ours?</div>
+<div class="choices">
+<button class="day active" data-day="6 October">6 October</button>
+<button class="day" data-day="7 October">7 October</button>
+</div>
+
+<button class="primary" id="yes">Yes, let’s go 💗</button>
+<button class="secondary" id="think">I’ll think about it 👀</button>
+<div id="result"></div>
+<p class="footer">No fixed time — when your coaching time comes, we’ll bunk and go. ✨</p>
+</main></div>
+
+<script>
+let day="6 October";
+const result=document.getElementById("result");
+document.querySelectorAll(".day").forEach(b=>b.onclick=()=>{
+ document.querySelectorAll(".day").forEach(x=>x.classList.remove("active"));
+ b.classList.add("active"); day=b.dataset.day; result.textContent="";
+});
+document.getElementById("yes").onclick=()=>{result.textContent=`Then it’s a date. 🤍 ${day} at TSC.`};
+document.getElementById("think").onclick=()=>{result.textContent="Take your time… but I really hope you say yes. 🥺🤍"};
+</script>
+</body>
+</html>
